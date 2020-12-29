@@ -183,7 +183,7 @@ ol li {
 
 ul li,
 ol li {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 
@@ -193,3 +193,102 @@ ol li {
     box-sizing: border-box;
     outline: 0;
 }
+
+
+
+/* Start Style navbar  */
+.champnav {
+    border-top: 1px solid #eeeeee;
+    border-bottom: 1px solid #eeeeee;;
+}
+
+.champnav .navbar {
+    padding: 0;
+}
+.champnav .navbar-nav {
+    align-items: center;
+}
+.champnav form {
+    width: 100%;
+}
+.champnav form input {
+    padding: 10px 10px 10px 30px;
+    border: none;
+    width: 300px;
+    
+}
+.champnav form input::placeholder {
+    color: #999999;
+}
+.champnav .search-icon {
+
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+/* .champnav .navbar .navbar-brand {
+    border-right: 1px solid #ff0000;
+} */
+.bg-light {
+    background: none !important;
+}
+.cut {
+    height: 65px;
+    width: 1px;
+    background-color: #eeeeee;
+    margin-top: 0;
+    margin-right: 15px;
+}
+.cut2 {
+    height: 45px;
+    width: 1px;
+    background-color: #eeeeee;
+    margin-top: 0;
+    margin-left: 10px;
+}
+.champnav .nav-item {
+    margin-left: 10px;
+}
+.champnav .nav-item .compine-icon {
+    display: flex;
+    align-items: center;
+}
+.champnav .nav-item .nav-link {
+    color: #999999 !important;
+    font-weight: 100;
+    transition: .3s;
+}
+.champnav .nav-item.signup a {
+    background-color: #09294c;
+    color: #ffffff !important;
+    border-radius: 5px;
+    padding: 10px 30px;
+}
+.champnav .nav-item.signup a:hover {
+    color: #ffffff;
+}
+.champnav .nav-item .nav-link:hover {
+    color: #666666;
+}
+
+@media(max-width: 1199px) {
+    .item-search-ul, .item-search {
+        display: none;
+    }
+    .navbar-nav > div:first-child {
+        display: none;
+    }
+}
+@media(max-width: 991px) {
+    .cut2, .cut {
+        display: none;
+    }
+    .champnav .navbar-nav {
+        align-items: normal;
+    }
+    .champnav {
+        padding: 20px 0;
+    }
+    
+}
+/* End Style Navbar  */

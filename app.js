@@ -11,7 +11,8 @@ app.set('view engine', 'ejs');
 app.set('views', 'views');
 
 app.get('/', (req, res, next) => {
-    res.send('Home Done');
+    res.render('admin/main')
+    // res.render('index')
 });
 
 // create server
