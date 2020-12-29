@@ -1,3 +1,37 @@
 <%- include('parts/header') %>
-<%- include('parts/navbar') %>
-<%- include('parts/footer') %>
+    <%- include('parts/navbar') %>
+
+        <div class="products" style="margin-top: 40px;">
+            <div class="container">
+                <div class="row">
+                    <% for (let product of products) { %>
+                        <div class="col-md-4">
+                            <div class="card" style="width: 18rem;">
+                                <img class="card-img-top" src="product/<%= product.image %>" alt="Card image cap">
+                                <div class="card-body">
+                                    
+                                    <a href="products/<%= product.id %>"><h3>
+                                        <%= product.name %>
+                                    </h3></a>
+                                    <h5>
+                                        <%= product.category %>
+                                    </h5>
+                                    <p class="card-text">
+                                        <%= product.description %>
+                                    </p>
+
+                                    <span class="btn btn-success"><%= product.price %></span>
+                                    <br><br>
+                                    <form action="/cart" method="POST">
+                                        <input type="number" name="amount">
+                                        <br><br>
+                                        <input type="submit" value="Add to cart" class="btn btn-primary">
+                                    </form>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+                </div>
+            </div>
+            <%- include('parts/footer') %>
