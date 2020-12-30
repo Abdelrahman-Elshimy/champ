@@ -12,11 +12,28 @@ const productSchema = mongoose.Schema({
 
 const Product = mongoose.model('product', productSchema);
 
+// get all products
 exports.getAllProducts = () => {
     // connect to db
     return new Promise((resolve, reject) => {
         mongoose.connect(DB_URL).then(() => {
             Product.find().then((products) => {
+                mongoose.disconnect();
+                resolve(products);
+            })
+        }).catch(err => reject(err));
+    })
+    
+}
+
+// get all products from specific category
+exports.getCategoryProducts = (category) => {
+    // connect to db
+    return new Promise((resolve, reject) => {
+        mongoose.connect(DB_URL).then(() => {
+            Product.find({
+                category: category
+            }).then((products) => {
                 mongoose.disconnect();
                 resolve(products);
             })
