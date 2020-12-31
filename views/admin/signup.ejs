@@ -1,0 +1,36 @@
+<%- include('./parts/header'); %>
+    <%- include('./parts/navbar'); %>
+    <%- include('./parts/errors'); %>
+
+                <div class="container" style="padding-top: 20px;">
+                    <form action="/signup" method="POST">
+                        <div class="form-group">
+                            <label for="exampleInputName">Name</label>
+                            <input required type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp"
+                                name="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input required type="email" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" name="email">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with
+                                anyone
+                                else.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputNumer">Phone Number</label>
+                            <input required type="tel" class="form-control" id="exampleInputNumer" aria-describedby="emailHelp"
+                                name="phoneNumber">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input required type="password" class="form-control" id="exampleInputPassword1" name="password">
+                        </div>
+                        <div class="form-group" style="position: absolute; opacity: 0; z-index: -23423;">
+                            <input type="number" name="role" value="1">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+
+                <%- include('./parts/footer'); %>

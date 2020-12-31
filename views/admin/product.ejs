@@ -1,0 +1,24 @@
+<%- include('./parts/header'); %>
+<%- include('./parts/navbar'); %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <img src="/product/<%= product.image %>" alt="<%= product.image %>" class="img-responsive" style="max-width: 100%;">
+            </div>
+            <div class="col-md-5" style="margin-top: 70px;">
+                <div class="product-info">
+                    <h3><%= product.name %></h3>
+                    <p><%= product.price %></p>
+                    <p><%= product.description %></p>
+                    <p><%= product.category %></p>
+                </div>
+                <form action="/cart" method="POST">
+                    <input type="number" class="form-control" placeholder="Amount">
+                    <input type="submit" value="Add To Cart" class="btn btn-primary" style="margin-top: 10px;">
+                </form>
+            </div>
+        </div>
+    </div>
+
+<%- include('./parts/footer'); %>
