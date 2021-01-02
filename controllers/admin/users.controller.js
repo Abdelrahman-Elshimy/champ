@@ -1,5 +1,4 @@
 const adminUserModel = require('./../../models/users.model');
-const productModel = require('../../models/products.model')
 
 exports.postNewUser = (req, res, next) => {
     adminUserModel.AddNewUser(req.body).then(() => {
@@ -12,16 +11,18 @@ exports.postNewUser = (req, res, next) => {
 }
 
 exports.postLoginUser = (req, res, next) => {
-    adminUserModel.LoginUser(req.body.email, req.body.password).then(user => {
-        productModel.getAllProducts().then((products) => {
-            res.render('admin/main', {
-                products: products,
-                user: user
-            })
-        })
+    adminUserModel.LoginUser(req.body.email, req.body.password).then(userID => {
+        req.session.userID = userID;
+        res.redirect('/');
     }).catch(err => {
         res.render('admin/login', {
             errs: err
         })
     })
+}
+
+exports.logout = (req, res, next) => {
+    req.session.destroy(()=>{
+        res.redirect('/')
+    });
 }

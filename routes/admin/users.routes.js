@@ -14,4 +14,6 @@ router.get('/login', (req, res, next) => {
 
 router.post('/login',bodyParser.urlencoded({extended: true}), adminUserController.postLoginUser);
 
+router.all('/logout', adminUserController.logout)
+
 module.exports = router;

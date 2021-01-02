@@ -43,7 +43,7 @@ exports.LoginUser = (email, password) => {
             }).then((user) => {
                 if (user) {
                     mongoose.disconnect();
-                    resolve(user);
+                    resolve(user._id);
                 }
                 else {
                     mongoose.disconnect();
