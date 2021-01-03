@@ -1,13 +1,21 @@
+const validatorResult = require('express-validator').validationResult;
 const adminUserModel = require('./../../models/users.model');
 
 exports.postNewUser = (req, res, next) => {
-    adminUserModel.AddNewUser(req.body).then(() => {
-        res.redirect('login');
-    }).catch(err => {
+    if (!validatorResult(req).array().length > 0) {
+        adminUserModel.AddNewUser(req.body).then(() => {
+            res.redirect('login');
+        }).catch(err => {
+            res.render('admin/signup', {
+                errs: err
+            })
+        });
+    }
+    else {
         res.render('admin/signup', {
-            errs: err
+            validateErrors: validatorResult(req).array()
         })
-    });
+    }
 }
 
 exports.postLoginUser = (req, res, next) => {
@@ -15,14 +23,13 @@ exports.postLoginUser = (req, res, next) => {
         req.session.userID = userID;
         res.redirect('/');
     }).catch(err => {
-        res.render('admin/login', {
-            errs: err
-        })
+        req.flash('authError', 'Email or password not correct');
+        res.redirect('/login');
     })
 }
 
 exports.logout = (req, res, next) => {
-    req.session.destroy(()=>{
+    req.session.destroy(() => {
         res.redirect('/')
     });
 }

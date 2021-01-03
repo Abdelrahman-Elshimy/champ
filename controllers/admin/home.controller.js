@@ -6,7 +6,8 @@ exports.getHome = (req, res, next) => {
     if (req.query.category !== undefined && req.query.category !== 'All') {
         productModel.getCategoryProducts(req.query.category).then(products => {
             res.render('admin/main', {
-                products: products
+                products: products,
+                isUser: req.session.userID
             })
         });
     }
@@ -14,7 +15,8 @@ exports.getHome = (req, res, next) => {
         // get products
         productModel.getAllProducts().then((products) => {
             res.render('admin/main', {
-                products: products
+                products: products,
+                isUser: req.session.userID
             })
         })
     }

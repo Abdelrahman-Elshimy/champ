@@ -46,7 +46,7 @@ exports.getProductById = (id) => {
                 Product.findById(id).then((product) => {
                     mongoose.disconnect();
                     resolve(product);
-                })
+                }).catch(err => reject(err))
             }).catch(err => reject(err));
     })
 }

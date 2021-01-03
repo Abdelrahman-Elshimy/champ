@@ -6,12 +6,12 @@
                     <form action="/signup" method="POST">
                         <div class="form-group">
                             <label for="exampleInputName">Name</label>
-                            <input required type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp"
+                            <input  type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp"
                                 name="name">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email address</label>
-                            <input required type="email" class="form-control" id="exampleInputEmail1"
+                            <input  type="email" class="form-control" id="exampleInputEmail1"
                                 aria-describedby="emailHelp" name="email">
                             <small id="emailHelp" class="form-text text-muted">We'll never share your email with
                                 anyone
@@ -19,12 +19,12 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputNumer">Phone Number</label>
-                            <input required type="tel" class="form-control" id="exampleInputNumer" aria-describedby="emailHelp"
+                            <input  type="tel" class="form-control" id="exampleInputNumer" aria-describedby="emailHelp"
                                 name="phoneNumber">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Password</label>
-                            <input required type="password" class="form-control" id="exampleInputPassword1" name="password">
+                            <input  type="password" class="form-control" id="exampleInputPassword1" name="password">
                         </div>
                         <div class="form-group" style="position: absolute; opacity: 0; z-index: -23423;">
                             <input type="number" name="role" value="1">
@@ -32,5 +32,18 @@
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
+
+                <% if (typeof validateErrors !=='undefined' ) { %>
+                    <div class="container" style="padding-top: 20px;">
+                       <% for (let err of validateErrors) { %> 
+                        <div class="alert alert-danger">
+                            <h1>
+                                <%= err.msg %>
+                            </h1>
+                
+                        </div>
+                        <% } %>
+                    </div>
+                <% } %>
 
                 <%- include('./parts/footer'); %>

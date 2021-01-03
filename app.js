@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const flash = require('connect-flash');
 const session = require('express-session');
 const SessionStore = require('connect-mongodb-session')(session);
 
@@ -10,9 +11,12 @@ const adminUsersRoutes = require('./routes/admin/users.routes');
 
 const app = express();
 
+app.use(flash());
+
 // use static files
 app.use(express.static(path.join(__dirname, 'assets')));
 app.use(express.static(path.join(__dirname, 'images')));
+
 
 // Connect DB To Session
 const STORE = new SessionStore({
