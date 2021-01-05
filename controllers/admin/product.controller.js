@@ -10,3 +10,9 @@ exports.getProduct = (req, res, next) => {
         res.redirect('/')
     })
 }
+exports.addProduct = (req, res, next) => {
+    req.body.image = '1.png';
+    productModel.addNewProduct(req.body).then(() => {
+        res.redirect('/');
+    }).catch(err => res.redirect('/addproduct'));
+}

@@ -1,0 +1,29 @@
+<%- include('parts/header') %>
+<%- include('parts/navbar') %>
+
+<div class="container">
+    <div class="row">
+       <% if(carts) { %> 
+        <% for (let cart of carts) { %>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-5">
+                    <% if(product) { %> 
+                    <img src="product/<%= product.image %>" alt="" style="max-width: 100%;">
+                    <% } %>
+                </div>
+                <div class="col-md-7">
+                    <h5 style="margin-top:30px">Name: <%= cart.name %></h5>
+                    <p>Price: <%= cart.price %></p>
+                    <p>Amount: <%= cart.amount %></p>
+
+                </div>
+            </div>
+        </div>
+        <% }} else { %>
+            <h1>No Carts Yet</h1>
+        <% } %>
+
+    </div>
+</div>
+<%- include('parts/footer') %>

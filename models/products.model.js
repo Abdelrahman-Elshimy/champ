@@ -17,7 +17,7 @@ exports.getAllProducts = () => {
     // connect to db
     return new Promise((resolve, reject) => {
         mongoose.connect(DB_URL).then(() => {
-            Product.find().then((products) => {
+            Product.find().sort({_id: -1}).then((products) => {
                 mongoose.disconnect();
                 resolve(products);
             })
@@ -49,4 +49,19 @@ exports.getProductById = (id) => {
                 }).catch(err => reject(err))
             }).catch(err => reject(err));
     })
+}
+
+exports.addNewProduct = (product) => {
+    return new Promise((resolve, reject) => {
+        mongoose.connect(DB_URL).then(() => {
+            let prod = new Product(product);
+            prod.save().then(() => {
+                mongoose.disconnect();
+                resolve();
+            }).catch(err => {
+                mongoose.disconnect();
+                reject('Error On DB')
+            })
+        }).catch(err => reject('Error On DB'))
+    });
 }

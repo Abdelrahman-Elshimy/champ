@@ -10,12 +10,12 @@
                 <% if (isUser) { %>
                 <a class="nav-item nav-link" href="/cart">Cart</a>
                 <a class="nav-item nav-link" href="#">Orders</a>
+                <a class="nav-item nav-link" href="/addproduct">Add Product</a>
                 <% } else { %>
                 <a class="nav-item nav-link" href="/login">Login</a>
                 <a class="nav-item nav-link" href="/signup">Sign Up</a>
                 <% } %>
-                <a class="nav-item nav-link" href="#">Add Product</a>
-                <a class="nav-item nav-link" href="#">Manage Orders</a>
+                
                 <% if (isUser) { %>
                 <form action="/logout" method="post">
                   <input type="submit" value="Logout" class="btn btn-danger">

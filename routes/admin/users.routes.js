@@ -4,7 +4,7 @@ const adminUserController = require('./../../controllers/admin/users.controller'
 const isAuthGuard = require('./../guards/auth.guard');
 const bodyParser = require('body-parser');
 
-router.get('/signup', isAuthGuard.isAuth, (req, res, next) => {
+router.get('/signup', isAuthGuard.isNotAuth, (req, res, next) => {
     res.render('admin/signup', {
         isUser: req.secure.userID,
     });
@@ -17,7 +17,7 @@ check('phoneNumber').notEmpty().withMessage('Phone number must be filled').isNum
 check('password').notEmpty().withMessage('Password must be filled').isLength({min: 6, max: 12}).withMessage('Password must be form 6 to 12 char'),
 adminUserController.postNewUser);
 
-router.get('/login', isAuthGuard.isAuth, (req, res, next) => {
+router.get('/login', isAuthGuard.isNotAuth, (req, res, next) => {
     const error = req.flash('authError')[0];
     res.render('admin/login', {
         errs: error,

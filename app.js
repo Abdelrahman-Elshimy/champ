@@ -4,10 +4,15 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const SessionStore = require('connect-mongodb-session')(session);
 
-// Import Routes
+// Import Routes for admin
 const adminHomeRoutes = require('./routes/admin/home.routes');
 const adminProductRoutes = require('./routes/admin/product.routes');
 const adminUsersRoutes = require('./routes/admin/users.routes');
+const adminCartRoutes = require('./routes/admin/cart.routes');
+
+// Import Routes for customers
+const userHomeRoutes = require('./routes/customers/home.routes');
+
 
 const app = express();
 
@@ -35,12 +40,16 @@ app.use(session({
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
-// External Routes
+// External Routes For Admin
 app.use(adminHomeRoutes);
 app.use(adminProductRoutes);
 app.use(adminUsersRoutes);
+app.use(adminCartRoutes);
+
+// External Routes For User
+app.use(userHomeRoutes);
 
 // create server
-app.listen(3000, (err) => {
-    console.log('server listen on port 3000');
+app.listen(3002, (err) => {
+    console.log('server listen on port 3002');
 });

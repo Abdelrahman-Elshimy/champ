@@ -1,0 +1,45 @@
+<%- include('./parts/header'); %>
+    <%- include('./parts/navbar'); %>
+    <%- include('./parts/errors'); %>
+
+                <div class="container" style="padding-top: 20px;">
+                    <form action="/addproduct" method="POST">
+                        <div class="form-group">
+                            <label for="exampleInputName">Name</label>
+                            <input  type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp"
+                                name="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Price</label>
+                            <input  type="number" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" name="price">
+                           
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputNumer">Category</label>
+                            <input  type="text" class="form-control" id="exampleInputNumer" aria-describedby="emailHelp"
+                                name="category">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Description</label>
+                            <input  type="text" class="form-control" id="exampleInputPassword1" name="description">
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+
+                <% if (typeof validateErrors !=='undefined' ) { %>
+                    <div class="container" style="padding-top: 20px;">
+                       <% for (let err of validateErrors) { %> 
+                        <div class="alert alert-danger">
+                            <h1>
+                                <%= err.msg %>
+                            </h1>
+                
+                        </div>
+                        <% } %>
+                    </div>
+                <% } %>
+
+                <%- include('./parts/footer'); %>

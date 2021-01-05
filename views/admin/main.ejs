@@ -1,6 +1,15 @@
 <%- include('parts/header') %>
     <%- include('parts/navbar') %>
-
+    <% if (typeof cartAdded !=='undefined' ) { %>
+        <div class="container" style="padding-top: 20px;">
+            <div class="alert alert-danger">
+                <h1>
+                    <%= cartAdded %>
+                </h1>
+    
+            </div>
+        </div>
+    <% } %>
         <div class="products" style="margin-top: 40px;">
             <div class="container">
                 <form action="/" method="GET">
@@ -39,10 +48,15 @@
                                     <span class="btn btn-success"><%= product.price %></span>
                                     <form action="/cart" method="POST" style="margin-top: 5px;">
                                         <input type="number" name="amount">
+                                        <input type="hidden" name="name" value="<%= product.name %>">
+                                        <input type="hidden" name="price" value="<%= product.price %>">
+                                        <input type="hidden" name="productId" value="<%= product._id %>">
+                                        <input type="hidden" name="userId" value="<%= isUser %>">
                                         <input type="submit" value="Add to cart" class="btn btn-primary" style="margin-top: 5px;">
                                     </form>
                                     
                                 </div>
+                                
                             </div>
                         </div>
                         <% } %>
